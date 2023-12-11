@@ -4,8 +4,8 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import { Server } from 'socket.io';
-import messageRoutes from '../server/routes/messagesRoute.js'
-import userRoutes  from '../server/routes/userRoute.js'
+import messageRoutes from './routes/messages.js'
+import userRoutes  from './routes/user.js'
 
 const app = express();
 
