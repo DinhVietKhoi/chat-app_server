@@ -6,11 +6,16 @@ import bodyParser from 'body-parser'
 import { Server } from 'socket.io';
 import messageRoutes from './routes/messages.js'
 import userRoutes  from './routes/user.js'
-
+const corsOptions = {
+    origin: 'https://chatapp-dinhvietkhoi.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+};
 const app = express();
 
 dotenv.config();
-app.use(cors());
+app.use(cors(corsOptions));
 // Thiết lập giới hạn kích thước tối đa của yêu cầu
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
@@ -36,11 +41,10 @@ const port = process.env.PORT || 6001
 const server =  app.listen(port, ()=> console.log(`Máy chủ đang hoạt động tại cổng: ${port}`))
   
 const io = new Server(server, {
+    
     cors: {
-        origin: 'chatapp-dinhvietkhoi.vercel.app',  // Thay đổi thành địa chỉ máy khách của bạn
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        credentials: true,
-        optionsSuccessStatus: 204,
+        origin: 'https://chatapp-dinhvietkhoi.vercel.app',
+        methods: ['GET', 'POST'],
     },
 })
 const connectedUsers = {}
