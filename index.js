@@ -37,7 +37,7 @@ const server =  app.listen(port, ()=> console.log(`Máy chủ đang hoạt độ
   
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:5173',  // Thay đổi thành địa chỉ máy khách của bạn
+        origin: 'chatapp-dinhvietkhoi.vercel.app',  // Thay đổi thành địa chỉ máy khách của bạn
     },
 })
 const connectedUsers = {}
